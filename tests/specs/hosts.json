@@ -1,19 +1,26 @@
 [
   {
-    "name": "/hosts",
+    "name": "/hosts lists image hosts",
     "steps": [
       {
+        "send": { "text": "/hosts" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "List enabled image hosts and their policies"
+              "text": "Available image hosts:\n\n**Catbox**\nAnonymous upload, no account needed. Direct links.\nMax size: 200 MB\nExpiry: Permanent\nDirect links: Yes\n\n**Imgur**\nPopular host, public gallery. Direct links.\nMax size: 20 MB\nExpiry: Permanent (anonymous)\nDirect links: Yes\n\n**0x0.st**\nMinimalist host. Direct links, auto-expires.\nMax size: 512 MB\nExpiry: 14 days or 100 downloads\nDirect links: Yes\n\n**file.io**\nEphemeral links. Self-destructs after first download.\nMax size: 2 GB\nExpiry: 14 days or 1 download\nDirect links: No (view page)"
             }
           }
-        ],
-        "send": {
-          "text": "/hosts"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "hosts menu button shows the same host list",
+    "steps": [
+      {
+        "send": { "callback": "hosts:show" },
+        "expect": [{ "method": "editMessageText" }]
       }
     ]
   }

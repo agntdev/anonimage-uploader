@@ -1,19 +1,26 @@
 [
   {
-    "name": "/upload",
+    "name": "/upload shows upload instructions",
     "steps": [
       {
+        "send": { "text": "/upload" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Initiate image upload process"
+              "text": "Send me one or more images and I'll upload them anonymously."
             }
           }
-        ],
-        "send": {
-          "text": "/upload"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "upload menu button shows the same instructions",
+    "steps": [
+      {
+        "send": { "callback": "upload:show" },
+        "expect": [{ "method": "editMessageText" }]
       }
     ]
   }
